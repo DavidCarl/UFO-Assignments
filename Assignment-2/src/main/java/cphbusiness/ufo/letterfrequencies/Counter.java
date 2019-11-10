@@ -1,6 +1,6 @@
 package cphbusiness.ufo.letterfrequencies;
 
-public class CharObj {
+public class Counter {
 
     private int count = 0;
 

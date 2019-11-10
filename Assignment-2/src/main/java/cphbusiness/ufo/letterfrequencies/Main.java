@@ -2,10 +2,6 @@ package cphbusiness.ufo.letterfrequencies;
 
 import java.io.*;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import static java.util.stream.Collectors.toMap;
 
 /**
  * Frequency analysis Inspired by
@@ -16,7 +12,7 @@ import static java.util.stream.Collectors.toMap;
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        String fileName = "/home/tjalfe/Documents/github/UFO/letterfrequencies/src/main/resources/FoundationSeries.txt";
+        String fileName = "C:\\Users\\Admin\\Documents\\Github\\davidcarl\\UFO-Assignments\\Assignment-2\\src\\main\\resources\\FoundationSeries.txt";
         int runs = 100;
         int[] time = new int[runs];
         Reader reader;
@@ -44,7 +40,7 @@ public class Main {
         for(int i = 0; i < runs; i++) {
             long startTime = System.nanoTime();
             reader = new BufferedReader(new FileReader(fileName));
-            Map<Integer, CharObj> freq = new HashMap();
+            Map<Integer, Counter> freq = new HashMap();
             improvedTallyChars2(reader, freq);
             long duration = System.nanoTime() - startTime;
             time[i] = (int) duration / 1000000;
@@ -79,13 +75,13 @@ public class Main {
         }
     }
 
-    private static void improvedTallyChars2(Reader reader, Map<Integer, CharObj> freq) throws IOException {
+    private static void improvedTallyChars2(Reader reader, Map<Integer, Counter> freq) throws IOException {
         int b;
         while ((b = reader.read()) != -1) {
             try {
                 freq.get(b).increment();
             } catch (NullPointerException np) {
-                freq.put(b, new CharObj());
+                freq.put(b, new Counter());
             };
         }
     }
