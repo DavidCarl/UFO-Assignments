@@ -9,5 +9,8 @@
         <module name="letterfrequencies" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="letterfrequencies" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
